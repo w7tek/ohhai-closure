@@ -1,9 +1,0 @@
-[submodule "lib/closure-library"]
-	path = lib/closure-library
-	url = https://github.com/jarib/google-closure-library.git
-[submodule "build/closure-compiler"]
-	path = build/closure-compiler
-	url = https://github.com/adinardi/google-closure-compiler.git
-[submodule "build/closure-templates"]
-	path = build/closure-templates
-	url = https://github.com/knutwalker/google-closure-templates
