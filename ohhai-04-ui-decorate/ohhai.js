@@ -2,7 +2,7 @@
 /*
 
 compile from top-level:
- sh build/compile.sh ADVANCED_OPTIMIZATIONS --root=ohhai-04-ui-decorate --namespace=us.w7tek.ohhai > ohhai-04-ui-decorate/ohhai-compiled.js
+ sh ../build/jsc.sh ADVANCED_OPTIMIZATIONS --namespace=us.w7tek.ohhai ohhai.js > ohhai-compiled.js
 
 */
 
