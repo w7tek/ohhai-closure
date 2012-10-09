@@ -1,4 +1,3 @@
-
 goog.provide('us.w7tek.ohhai');
 goog.require('goog.dom');
 
