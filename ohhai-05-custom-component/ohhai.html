@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Oh, hai, Closure UI components!</title>
+
+    <style type="text/css">
+
+        div.right-side-top-to-bottom {
+            position: fixed;
+            margin-right: 0;
+            top: 20px;
+            bottom: 20px;
+            right: 10px;
+        }
+
+        ul.w7tek-infinite-list {
+            /*position: relative;*/
+            height: 100%;
+            overflow-y: scroll;
+            border: 1px solid #a9a9a9;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 200px;
+            background-color: #add8e6;
+        }
+
+        ul.w7tek-infinite-list li {
+            line-height: 8;
+            width: 100%;
+            border-bottom: 1px solid #a9a9a9;
+        }
+    </style>
+
+</head>
+<body>
+    <heading>
+        <h1>Oh, hai, Closure UI components!</h1>
+    </heading>
+    <div class="right-side-top-to-bottom">
+        <ul id="infinite-list" class="w7tek-infinite-list">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+            <li>Six</li>
+            <li>Seven</li>
+            <li>Eight</li>
+            <li>Nine</li>
+            <li>Ten</li>
+        </ul>
+    </div>
+
+    <!--======= DEV MODE =======-->
+
+    <!--This group WILL NOT WORK for dev mode because of how dependencies are added: the <script/> blocks added to-->
+    <!--the bottom of the document won't be parsed in time for the things that depend upon them to be correctly-->
+    <!--parsed.-->
+    <!--<script src="../google-closure-tools/library/closure/goog/base.js"></script>-->
+    <!--<script src="infiniteList.js"></script>-->
+    <!--<script src="ohhai.js"></script>-->
+
+    <!--<script type="text/javascript">-->
+<!--//        <[CDATA[-->
+        <!--var CLOSURE_NO_DEPS=true;   //  Tell base.js NOT to pull in its own deps.js-->
+<!--//        ]]>-->
+    <!--</script>-->
+
+    <!--<script src="../google-closure-tools/library/closure/goog/base.js"></script>-->
+    <!--&lt;!&ndash;See build.sh in this directory, to see how to produce deps.js&ndash;&gt;-->
+    <!--<script src="generated/deps.js"></script>-->
+    <!--<script src="ohhai.js"></script>-->
+
+    <!--======= COMPILED MODE =======-->
+    <script src="generated/ohhai-compiled.js"></script>
+</body>
+</html>
