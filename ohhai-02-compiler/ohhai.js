@@ -1,4 +1,3 @@
-
 goog.provide('us.w7tek.ohhai');
 goog.require('goog.dom');
 
@@ -9,4 +8,5 @@ us.w7tek.ohhai.sayHai = function () {
     goog.dom.appendChild(document.body, newHeader);
 };
 
+//  thwart renaming (advanced compilation would make the symbol unreachable from the .html)
 goog.exportSymbol('us.w7tek.ohhai.sayHai', us.w7tek.ohhai.sayHai);
