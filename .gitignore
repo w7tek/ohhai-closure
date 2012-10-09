@@ -1,2 +1,4 @@
 .DS_Store
 .idea/
+google-closure-tools/compiler/build/**/*
+google-closure-tools/templates/build/**/*
