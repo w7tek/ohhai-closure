@@ -10,7 +10,7 @@ us.w7tek.ohhai.onload = function (ev) {
     var component = goog.ui.decorate(iList);
 
     var count = 1;
-    component.setPopulator(function (/**  */ appender_callback) {
+    component.setPopulator(function (appender_f) {
         /** @type {Array.<HTMLLIElement>} */ var newItems = [];
 
         for (var limit = count + 10; count < limit; ++count) {
@@ -20,7 +20,7 @@ us.w7tek.ohhai.onload = function (ev) {
             newItems.push(li);
         }
 
-        setTimeout(goog.partial(appender_callback, newItems), 600);    //  simulate 600ms server request roundtrip
+        setTimeout(goog.partial(appender_f, newItems), 600);    //  simulate 600ms server request roundtrip
     });
 };
 

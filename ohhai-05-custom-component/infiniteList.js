@@ -1,3 +1,9 @@
+
+/**
+ * @license
+ * Copyright (C) 2012 Tommy Knowlton. This example code is placed into the public domain by the original author.
+ */
+
 /**
  * @fileoverview InfiniteList is a {@link goog.ui.Control} that can load additional content items on-demand, appending
  * the loaded data to the control's domElement.
@@ -9,12 +15,12 @@ goog.require('goog.ui.Control');
 goog.require('goog.ui.ControlRenderer');
 
 /**
- * An instance of populator_ƒ is a function that receives an appender_callback_ƒ (a function). The populator_ƒ somehow
- * obtains additional data to append, and calls the appender_callback_ƒ, passing an Array.<HTMLLIElement> to it. (The
- * appender_callback_ƒ is provided by the InfiniteListRenderer, and manipulates the dom associated with this control).
- * @typedef {function(us.w7tek.ohhai.InfiniteListRenderer.appender_callback_ƒ)}
+ * An instance of populator_f is a function that receives an appender_callback_f (a function). The populator_f somehow
+ * obtains additional data to append, and calls the appender_callback_f, passing an Array.<HTMLLIElement> to it. (The
+ * appender_callback_f is provided by the InfiniteListRenderer, and manipulates the dom associated with this control).
+ * @typedef {function(us.w7tek.ohhai.InfiniteListRenderer.appender_callback_f)}
  */
-us.w7tek.ohhai.InfiniteList.populator_ƒ;
+us.w7tek.ohhai.InfiniteList.populator_f;
 
 /**
  *  Creates a new InfiniteList.
@@ -23,7 +29,7 @@ us.w7tek.ohhai.InfiniteList.populator_ƒ;
  *  @param {goog.ui.ControlRenderer=} opt_renderer Renderer used to render or decorate the component; defaults
  *  to an instance of {@link us.w7tek.ohhai.InfiniteListRenderer}.
  *  @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for document interaction.
- *  @param {us.w7tek.ohhai.InfiniteList.populator_ƒ=} opt_populator
+ *  @param {us.w7tek.ohhai.InfiniteList.populator_f=} opt_populator
  *  @constructor
  *  @extends {goog.ui.Control}
  */
@@ -40,10 +46,10 @@ us.w7tek.ohhai.InfiniteList = function (content, opt_renderer, opt_domHelper, op
     }
 
     /**
-     *  @type {us.w7tek.ohhai.InfiniteList.populator_ƒ}
+     *  @type {us.w7tek.ohhai.InfiniteList.populator_f}
      *  @private
      */
-    this.populator_ƒ_ = opt_populator;
+    this.populator_f_ = opt_populator;
 
     /**
      * Is a call to populate() in-progress - used to prevent sending additional server requests while already
@@ -56,26 +62,26 @@ us.w7tek.ohhai.InfiniteList = function (content, opt_renderer, opt_domHelper, op
 goog.inherits(us.w7tek.ohhai.InfiniteList, goog.ui.Control);
 
 /**
- *  A populator_ƒ that always provides an empty array of list elements to the ƒ. Used whenever a populator is not
+ *  A populator_f that always provides an empty array of list elements to the f. Used whenever a populator is not
  *  provided at construction.
- *  @type {us.w7tek.ohhai.InfiniteList.populator_ƒ}
+ *  @type {us.w7tek.ohhai.InfiniteList.populator_f}
  *  @private
  */
-us.w7tek.ohhai.InfiniteList.defaultPopulator_ = function (ƒ) {
+us.w7tek.ohhai.InfiniteList.defaultPopulator_ = function (f) {
     console.log('[WARNING]: InfiniteList default populator called.');
 
     /** @type {Array.<HTMLLIElement>} */ var populateItems = [];
 
-    setTimeout(goog.partial(ƒ, populateItems), 0);
+    setTimeout(goog.partial(f, populateItems), 0);
 };
 
 /**
  * Assign the callback to be used when this InfiniteList demands additional items (e.g., because it has been scrolled
  * toward the current tail of the list).
- * @param {us.w7tek.ohhai.InfiniteList.populator_ƒ} f
+ * @param {us.w7tek.ohhai.InfiniteList.populator_f} f
  */
 us.w7tek.ohhai.InfiniteList.prototype.setPopulator = function (f) {
-    this.populator_ƒ_ = f;
+    this.populator_f_ = f;
 };
 
 /**
@@ -88,18 +94,19 @@ us.w7tek.ohhai.InfiniteList.prototype.isPopulating = function () {
 
 /**
  * Demand-load additional items to be appended to the tail of the list.
- * @param {us.w7tek.ohhai.InfiniteListRenderer.appender_callback_ƒ} appender
+ * @param {us.w7tek.ohhai.InfiniteListRenderer.appender_callback_f} appender
  */
 us.w7tek.ohhai.InfiniteList.prototype.doPopulate = function (appender) {
     if (!this.populateInProgress_) {
         this.populateInProgress_ = true;
 
         var self = this;
-        var ƒ = function (items) {
+        var f = function (items) {
             self.populateInProgress_ = false;
             appender(items);
         };
-        this.populator_ƒ_(ƒ);
+
+        this.populator_f_(f);
     }
 };
 
@@ -123,10 +130,10 @@ goog.addSingletonGetter(us.w7tek.ohhai.InfiniteListRenderer);
 goog.ui.registry.setDefaultRenderer(us.w7tek.ohhai.InfiniteList, us.w7tek.ohhai.InfiniteListRenderer);
 
 /**
- * A callback function that is passed to a populator_ƒ instance when the InfiniteList control requires additional data.
+ * A callback function that is passed to a populator_f instance when the InfiniteList control requires additional data.
  * @typedef {function(Array.<HTMLLIElement>)}
  */
-us.w7tek.ohhai.InfiniteListRenderer.appender_callback_ƒ;
+us.w7tek.ohhai.InfiniteListRenderer.appender_callback_f;
 
 /**
  * @type {string}
